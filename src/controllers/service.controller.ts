@@ -1,3 +1,5 @@
+import { isNumberObject } from "util/types";
+
 //import { NextFunction, Request, Response } from 'express';
 const fs = require('fs');
 const pdf = require('pdf-parse');
@@ -20,7 +22,16 @@ class ServiceController {
             // check https://mozilla.github.io/pdf.js/getting_started/
             console.log(data.version);
             // PDF text
-            console.log(data.text); 
+            let CP = '575'
+            let dataRows = data.text.split('\n');
+            dataRows.forEach((row : string) => {
+                if(row.includes(` ${CP} ` ,0)){
+                    console.log('****'); //expresion regular para ver numero 
+                    console.log(row);
+                    console.log('****'); //expresion regular para ver numero 
+                }
+            });
+            //console.log(data.text.split('\n')); 
         
 });
     }
