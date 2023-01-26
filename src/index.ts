@@ -34,7 +34,7 @@ const options: cors.CorsOptions = {
 
 // initialize server app
 const server = new Server();
-server.app.use(cors(options));
+server.app.use(cors());
 server.app.use('/api', bodyParser.json() , server.router);
 
 // swagger docs

@@ -1,12 +1,12 @@
 import { isNumberObject } from "util/types";
 
-//import { NextFunction, Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 const fs = require('fs');
 const pdf = require('pdf-parse');
  
 
 class ServiceController {
-    gerService() {
+    gerService(req: Request, res: Response) {
         
         let dataBuffer = fs.readFileSync('../pdf/chivata_2429.pdf');
         pdf(dataBuffer).then(function(data) {
@@ -22,13 +22,14 @@ class ServiceController {
             // check https://mozilla.github.io/pdf.js/getting_started/
             console.log(data.version);
             // PDF text
-            let CP = '575'
+            let CP = req.query.CP;
             let dataRows = data.text.split('\n');
             dataRows.forEach((row : string) => {
                 if(row.includes(` ${CP} ` ,0)){
                     console.log('****'); //expresion regular para ver numero 
                     console.log(row);
                     console.log('****'); //expresion regular para ver numero 
+                    res.status(200).send(row);
                 }
             });
             //console.log(data.text.split('\n')); 
