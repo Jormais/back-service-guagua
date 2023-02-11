@@ -1,11 +1,11 @@
 import { Router } from 'express';
-import ServiceController from '../controllers/service.controller';
+import HorariosController from '../controllers/horarios.controller';
 
-class ServiceRouter {
+class CuadrantesRouter {
     
 
   private _router = Router();
-  private _controller = ServiceController;
+  private _controller = HorariosController;
 
   get router() {
     return this._router;
@@ -23,4 +23,4 @@ class ServiceRouter {
   }
 }
 
-export = new ServiceRouter().router;
+export = new CuadrantesRouter().router;
