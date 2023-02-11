@@ -5,7 +5,7 @@ const fs = require('fs');
 const pdf = require('pdf-parse');
  
 
-class ServiceController {
+class CuadrantesController {
     gerService(req: Request, res: Response) {
         
         let dataBuffer = fs.readFileSync('../pdf/chivata_2429.pdf');
@@ -25,7 +25,7 @@ class ServiceController {
             let CP = req.query.CP;
             let dataRows = data.text.split('\n');
             dataRows.forEach((row : string) => {
-                if(row.includes(` ${CP} ` ,0)){
+                if(row.includes(` ${590} ` ,0)){
                     console.log('****'); //expresion regular para ver numero 
                     console.log(row);
                     console.log('****'); //expresion regular para ver numero 
@@ -36,6 +36,10 @@ class ServiceController {
         
 });
     }
+
+    getSabado(){}
+    getDomingo(){}
+    getCuadrante(){}
 }
 
-export = new ServiceController();
+export = new CuadrantesController();
