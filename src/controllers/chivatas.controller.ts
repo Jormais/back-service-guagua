@@ -10,12 +10,15 @@ class ChivatasController {
         
         let dataBuffer = fs.readFileSync('../pdf/chivatas/chivata_2440.pdf');
         pdf(dataBuffer).then(function(data) {
-            console.log(data);
-            
-            
-        
-});
+            console.log(data);    
+        });
     }
+
+    getLunes(){}
+    getMartes(){}
+    getMiercoles(){}
+    getJueves(){}
+    getViernes(){}
 }
 
 export = new ChivatasController();
