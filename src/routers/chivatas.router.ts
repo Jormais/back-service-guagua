@@ -19,7 +19,8 @@ class ChivatasRouter {
    * Connect routes to their matching controller endpoints.
    */
    private _configure() {
-     this._router.get('/', this._controller.gerService2440);
+     this._router.get('/lunes', this._controller.getLunes);
+     this._router.get('/martes', this._controller.getMartes);
   }
 }
 

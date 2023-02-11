@@ -6,11 +6,13 @@ const pdf = require('pdf-parse');
  
 
 class CuadrantesController {
-    gerService(req: Request, res: Response) {
-        
-        let dataBuffer = fs.readFileSync('../pdf/chivata_2429.pdf');
-        pdf(dataBuffer).then(function(data) {
-            // number of pages
+    getSabado(){}
+    getDomingo(req: Request, res: Response){
+
+        let dataBuffer = fs.readFileSync('../pdf/cuadrantes/cuadrante_domingo-12.pdf');
+        let service  = '';
+        pdf(dataBuffer).then(async function(data) {
+            /* // number of pages
             console.log(data.numpages);
             // number of rendered pages
             console.log(data.numrender);
@@ -20,25 +22,30 @@ class CuadrantesController {
             console.log(data.metadata); 
             // PDF.js version
             // check https://mozilla.github.io/pdf.js/getting_started/
-            console.log(data.version);
+            console.log(data.version); */
             // PDF text
             let CP = req.query.CP;
             let dataRows = data.text.split('\n');
             dataRows.forEach((row : string) => {
-                if(row.includes(` ${590} ` ,0)){
+                if( row.endsWith(`${CP}`)){
                     console.log('****'); //expresion regular para ver numero 
                     console.log(row);
                     console.log('****'); //expresion regular para ver numero 
-                    res.status(200).send(row);
+                    service = row;
+                } else {
+                    console.log('No se han encontrado datos');
+                    
+                    if(service === ''){
+                        service = 'No se han encontrado datos';
+                    }
                 }
             });
-            //console.log(data.text.split('\n')); 
-        
+
+            if(service !== 'No se han encontrado datos'){
+                res.json(service)
+            }
 });
     }
-
-    getSabado(){}
-    getDomingo(){}
     getCuadrante(){}
 }
 
