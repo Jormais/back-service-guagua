@@ -19,7 +19,7 @@ class CuadrantesRouter {
    * Connect routes to their matching controller endpoints.
    */
    private _configure() {
-     this._router.get('/', this._controller.gerService);
+     this._router.get('/domingo', this._controller.getDomingo);
   }
 }
 
