@@ -32,10 +32,9 @@ class ChivatasController {
                 res.json(service)
             }
         });
-        
     }
     getMartes(req: Request, res: Response){
-        let dataBuffer = fs.readFileSync('../pdf/chivatas/chivata_martes_14.pdf');
+       /*  let dataBuffer = fs.readFileSync('../pdf/chivatas/chivata_martes_14.pdf');
         pdf(dataBuffer).then(function(data) {
             let service = '';
             let CP = req.query.CP;
@@ -57,11 +56,18 @@ class ChivatasController {
             if(service !== 'No se han encontrado datos'){
                 res.json(service)
             }
-        });
+        }); */
+        res.json('Chivata Martes');
     }
-    getMiercoles(){}
-    getJueves(){}
-    getViernes(){}
+    getMiercoles(req: Request, res: Response){
+        res.json('Chivata Miercoles');
+    }
+    getJueves(req: Request, res: Response){
+        res.json('Chivata Jueves');
+    }
+    getViernes(req: Request, res: Response){
+        res.json('Chivata Viernes');
+    }
 }
 
 export = new ChivatasController();

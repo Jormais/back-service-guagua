@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import ChivatasController from '../controllers/Chivatas.controller';
+import ChivatasController from '../controllers/chivatas.controller';
 
 class ChivatasRouter {
     
@@ -21,6 +21,10 @@ class ChivatasRouter {
    private _configure() {
      this._router.get('/lunes', this._controller.getLunes);
      this._router.get('/martes', this._controller.getMartes);
+     this._router.get('/miercoles', this._controller.getMiercoles);
+     this._router.get('/jueves', this._controller.getJueves);
+     this._router.get('/viernes', this._controller.getViernes);
+
   }
 }
 
